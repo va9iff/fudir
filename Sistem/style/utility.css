@@ -1,0 +1,12 @@
+.columns {
+	display: flex;
+	flex-direction: row;
+}
+.columns > *{
+	flex: 1;
+}
+.list{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}

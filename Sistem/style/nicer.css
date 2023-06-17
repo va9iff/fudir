@@ -1,0 +1,8 @@
+.container .sidebar button{
+	padding: 17px 30px;
+	font-size: 1.5rem;
+	border: none;
+	border-radius: 1.2rem;
+	background-color: #ddf;
+	margin: 5px;
+}
