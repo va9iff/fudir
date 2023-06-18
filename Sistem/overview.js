@@ -4,21 +4,24 @@ class VOverview extends VLit{
 		selected: 0
 	}
 	render(){
-		let overview = data.overview.at(this.selected)
+		let overview = data.overview[this.selected] || { total: 0, table: 0, foods: {} }
 		console.log(overview)
 		return html`
-		HI
 		<div class="columns">
-			<div class="list">
+			<div class="list orders">
 				${data.overview.map((order, orderI)=>html`
-					<span @click = ${e=>this.selected = orderI}>#${orderI} ${order.table} ${order.total}</span>
+					<span class="order" ?active=${orderI==this.selected} @click = ${e=>this.selected = orderI}>
+						<span class="numberPart o5"> ${orderI+1}№ </span> <span class="masaPart">${order.table+1}</span> <span class="totalPart">${order.total}₼</span>
+					</span>
 				`)}
 			</div>
-			<div class="list">
+			<div class="list selectedOrder">
 				${Object.keys(overview.foods).map(food=>html`
-					<span>${overview.foods[food].count}x ${food} ${overview.foods[food].total}m</span>
+					<span class="orderLine">${overview.foods[food].count}x ${food} ${overview.foods[food].total}m</span>
 					`)}
-				${overview.total}
+				<br>
+				${this.selected+1}№ Çek <br> 
+				${overview.table+1} Nömrəli masadan ümumi gəlir <b class="f3">${overview.total}₼</b>
 			</div>
 		</div>
 		`

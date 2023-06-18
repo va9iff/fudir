@@ -34,7 +34,7 @@ class VAdmin extends VLit{
 		this.requestUpdate()
 	}
 	addFood(e){
-		data.foods[this.newFoodName] = 0
+		data.foods[this.newFoodName] = this.newFoodPrice
 		save()
 		this.requestUpdate()
 	}
@@ -42,14 +42,25 @@ class VAdmin extends VLit{
 		if (e.target.value == "2024")
 			this.auth = true
 	}
+	addMasa(e){
+		data.orders.push({total: 0, foods: {}})
+		save()
+		this.requestUpdate()
+	}
+	removeMasa(e){
+		if (data.orders.length < 2) return null
+		data.orders.pop()
+		save()
+		this.requestUpdate()
+	}
 	render(){
 		return this.auth ? html` 
 		<button @click=${e=>window.vmain.page="Menyu"}>ADMIN PƏNCƏRƏSİNİ BAĞLA</button>
 		<br><br><br><br>
-		<div class="menu">
+		<div class="">
 			yeni yemək əlavə et
 			<input type="text" placeholder="yeməyin adı" @change=${e=>this.newFoodName = e.target.value}>
-			<input type="number" placeholder="yeməyin qiyməti" @change=${e=>this.newFoodPrice = e.target.value}>
+			<input type="number" placeholder="yeməyin qiyməti" @change=${e=>this.newFoodPrice = +e.target.value}>
 			<button @click=${this.addFood}>əlavə et</button>
 			${Object.keys(data.foods).map(food=>html`
 				<div class="food">
@@ -58,6 +69,11 @@ class VAdmin extends VLit{
 					<button @click = ${e=>this.deleteFood(food)}>sil</button>
 				</div>
 				`)}
+		</div>
+		<div>
+			<div>Masaların sayı: ${data.orders.length}</div>
+			<button @click= ${this.removeMasa}>Masanın sayını azalt</button>
+			<button @click= ${this.addMasa}>Masa əlavə et</button>
 		</div>
 		<button @click = ${this.wipe}>
 			BÜTÜN MƏLUMATLARI SİLİNSİN

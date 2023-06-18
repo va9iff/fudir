@@ -12,7 +12,7 @@ class VMain extends VLit{
 		page: {}
 	}
 	static props = {
-		page: "Qeydiyyat"
+		page: "Gündəlik"
 	}
 	constructor(){
 		super()
@@ -25,7 +25,7 @@ class VMain extends VLit{
 				<div class="container">
 					<div class="sidebar">
 						${Object.keys(pages).map(page=>html`
-								<button @click=${e=>this.page=page}>
+								<button @click=${e=>this.page=page} ?active=${this.page==page}>
 									${page}
 								</button>
 							`)}

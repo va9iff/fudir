@@ -1,0 +1,23 @@
+.menu{
+	display: flex;
+	flex-direction: column;
+/*	gap: 4px;*/
+/*	background-color: #ddd;*/
+/*	padding: 30px;*/
+	border-radius: 30px;
+}
+
+.menu .food{
+	padding: 13px 20px;
+	border-radius: 13px;
+	display: flex;
+	flex-direction: row;
+}
+
+.menu .food:hover{
+	background-color: #e7ffef;
+}
+
+.menu .price{
+	margin-left: auto;
+}

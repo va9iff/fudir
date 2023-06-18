@@ -1,7 +1,7 @@
 class VQeydiyyat extends VLit{
 	static properties = {}
 	static props = {
-		selectedOrder: 0
+		selectedOrder: data.selectedOrder
 	}
 	foodToOrder(food){
 		let order = data.orders[this.selectedOrder]
@@ -34,29 +34,34 @@ class VQeydiyyat extends VLit{
 		this.requestUpdate()
 		window.vmain.page = "Gündəlik"
 	}
+	selectMasa(i){
+		this.selectedOrder = i
+		data.selectedOrder = i
+		save()
+	}
 	render(){
 		let order = data.orders.at(this.selectedOrder)
 		return html`
-			<div>
-				<button @click=${e=>this.selectedOrder=0}>0</button>
-				<button @click=${e=>this.selectedOrder=1}>1</button>
-				<button @click=${e=>this.selectedOrder=2}>2</button>
-				<button @click=${e=>this.selectedOrder=3}>3</button>
-				<button @click=${e=>this.selectedOrder=4}>4</button>
+			<div class="masalar">
+				${data.orders.map((order,i)=>html`
+						<button @click=${e=>this.selectMasa(i)} class="masa" ?selected = ${this.selectedOrder == i} ?dolu=${data.orders[i].total}>${i+1}</button>
+
+					`)}
 			</div>
 			<div class="columns">
-				<div class="list">
+				<div class="list addingFoods">
 					${Object.keys(data.foods).map(food=>html`
-						<span @click = ${e=>{this.foodToOrder(food)}} class="price">${food} ${data.foods[food]}</span>
+						<button @click = ${e=>{this.foodToOrder(food)}} class="addingFood"><span class="plus">+</span>${food} ${data.foods[food]}</button>
 					`)}
 				</div>
 				<div class="list order">
+					<span>${this.selectedOrder+1} nömrəli masanın çeki <br><br></span>
 					${Object.keys(order.foods).map(food=>html`
-						<span class="price">${food} ${order.foods[food].count}x ${order.foods[food].total}
-						 <button @click=${e=>this.removeFromOrder(food)}>-</button>
+						<span>
+						<button @click=${e=>this.removeFromOrder(food)} class="delete">-</button> ${order.foods[food].count}x ${food} ${order.foods[food].total}₼
 						</span>
 					`)}
-					<span>${order.total} <button @click=${this.done}>Hesabı Tamamla</button></span> 
+					<span class="dayResult">${order.total ? order.total + "₼" : html`Masa boşdur!<br><br>0₼`} <button class="btn finishOrder" @click=${this.done} ?disabled=${!order.total}>Hesabı Tamamla</button></span> 
 				</div>
 			</div>
 			

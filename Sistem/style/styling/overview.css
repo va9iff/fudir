@@ -1,0 +1,37 @@
+.orders{
+	margin-right: 40px;
+}
+
+.order{
+	padding: 3px;
+	display: flex;
+}
+
+.order[active]{
+	background-color: #e7ffef;
+
+}
+
+.order .numberPart,
+.order .masaPart,
+.order .totalPart{
+	flex: 1;
+}
+
+
+.orderLine{
+	margin-top: 3px;
+	animation: orderLineAnim 300ms;
+}
+
+@keyframes orderLineAnim{
+	from{
+		transform: translateY(-10px);
+		opacity: 0;
+	}
+	to{
+		transform: translateY(0);
+		opacity: 1;
+
+	}
+}

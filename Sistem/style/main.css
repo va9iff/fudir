@@ -12,9 +12,17 @@
 	flex: 1;
 }
 
-.main .container *{
-	border: 1px solid #0002;
-	margin: 5px;
+/*.main .container *{*/
+/*	border: 1px solid #0002;*/
+/*	margin: 5px;*/
+/*}*/
+
+.container {
+	padding: 17px;
+}
+
+.content{
+	padding: 17px 25px;
 }
 
 

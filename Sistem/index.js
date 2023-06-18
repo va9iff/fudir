@@ -15,7 +15,8 @@ window.entry = () => ({
 		{total: 0, foods: {}},
 		],
 	orderTotal: 0,
-	overview: [{total: 0, foods: {}}/*orders*/]
+	overview: [{total: 0, table: 0, foods: {}}/*orders*/],
+	selectedOrder: 0
 })
 
 // clear()

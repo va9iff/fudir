@@ -3,6 +3,24 @@
 	font-size: 1.5rem;
 	border: none;
 	border-radius: 1.2rem;
-	background-color: #ddf;
+	background-color: #e7ffef;
 	margin: 5px;
+	transition: 200ms;
+	color: #222;
+}
+
+.container .sidebar button:hover{
+	background-color: #79f2b5;
+}
+
+.container .sidebar button[active]{
+/*	background-color: #e7ffef;*/
+/*	box-shadow: 0 0 0 2px #e7ffef;*/
+	background-color: #a1e0c0;
+}
+
+
+.container .sidebar{
+	align-items: center;
+	justify-content: center;
 }
