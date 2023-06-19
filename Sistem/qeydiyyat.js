@@ -51,19 +51,26 @@ class VQeydiyyat extends VLit{
 					`)}
 			</div>
 			<div class="columns">
-				<div class="list addingFoods">
-					${Object.keys(data.foods).map(food=>html`
-						<button @click = ${e=>{this.foodToOrder(food)}} class="addingFood"><span class="plus">+</span>${food} ${data.foods[food]}</button>
+				<div class="adderColumn">
+					${Object.keys(data.categories).map(cat=> html`
+						<details>
+						<summary>${cat}</summary>
+							<div class="list addingFoods">
+								${data.categories[cat].map(food=>html`
+									<button @click = ${e=>{this.foodToOrder(food)}} class="addingFood"><span class="plus">+</span>${food} ${data.foods[food]}₼</button>
+								`)}
+							</div>
+						</details>
 					`)}
 				</div>
-				<div class="list order">
+				<div class="list cek">
 					<span>${this.selectedOrder+1} nömrəli masanın çeki <br><br></span>
 					${Object.keys(order.foods).map(food=>html`
-						<span>
+						<span class="addedFood">
 						<button @click=${e=>this.removeFromOrder(food)} class="delete">-</button> ${order.foods[food].count}x ${food} ${order.foods[food].total}₼
 						</span>
 					`)}
-					<span class="dayResult">${order.total ? order.total + "₼" : html`Masa boşdur!<br><br>0₼`} <button class="btn finishOrder" @click=${this.done} ?disabled=${!order.total}>Hesabı Tamamla</button></span> 
+					<span class="dayResult">${order.total ? html`<h2>${order.total}₼</h2>` : html`Masa boşdur!<br><br><h2>0₼</h2>`} <button class="btn finishOrder" @click=${this.done} ?disabled=${!order.total}>Hesabı Tamamla</button></span> 
 				</div>
 			</div>
 			

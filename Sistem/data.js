@@ -12,6 +12,14 @@ export const entry = {
 		piti: 70,
 		xaş: 49,
 		cola: 0.7,
+		maxiato: 8,
+		espresso: 9,
+		"flat white": 16,
+		tea: 77,
+		portağal: 1,
+		alma: 7,
+		banan: 70,
+		dolma: 60
 	},
 	orders: [
 		{total: 0, foods: {}},
@@ -21,8 +29,8 @@ export const entry = {
 		{total: 0, foods: {}},
 		],
 	categories: {
-		"Əsas": ["Aş", "BozBaş", "piti", "xaş"],
-		"İçkilər": ["ayran", "dovğa"]
+		"Əsas": ["Aş", "BozBaş", "piti", "xaş", "portağal", "alma", "banan", "dolma"],
+		"İçkilər": ["ayran", "dovğa", "maxiato", "espresso", "flat white", "tea"]
 	},
 	orderTotal: 0,
 	overview: [{total: 0, table: 0, foods: {}}/*orders*/],

@@ -11,8 +11,10 @@ v-menu{
 /*	background-color: #ddd;*/
 /*	padding: 30px;*/
 	border-radius: 10px;
-	font-family: cursive;;
+	font-family: cursive;
 	overflow-y: scroll;
+	justify-content: flex-start;
+	align-items: flex-start;
 }
 
 .menu::-webkit-scrollbar {

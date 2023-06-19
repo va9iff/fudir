@@ -1,5 +1,13 @@
+v-qeydiyyat{
+	display: flex;
+	flex-direction: column;
+	overflow-y: scroll;
+}
+
 .masalar{
-	margin-bottom: 80px;
+	margin-bottom: 40px;
+	padding-left: 20px;
+	padding-top: 20px;
 }
 
 .masa {
@@ -80,4 +88,62 @@
 
 .addingFoods{
 	padding-right: 90px;
+}
+
+v-qeydiyyat details:hover{
+	box-shadow: 0 0 1px #333 inset;
+}
+
+
+v-qeydiyyat details {
+	border-radius: 4px;
+	user-select: none;
+	transition: 200ms;
+}
+v-qeydiyyat details summary{
+	padding: 8px;
+	border-radius: 4px;
+
+}
+v-qeydiyyat details summary:hover{
+	background-color: #c7ffe5;
+}
+v-qeydiyyat details[open]{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+v-qeydiyyat details[open] summary{
+	background-color: #c4e8d7;
+}
+
+v-qeydiyyat details[open] summary:hover{
+	background-color: #abd6c2;
+
+}
+
+.addedFood{
+	animation: addedFoodAnim 400ms;
+}
+
+@keyframes addedFoodAnim {
+	from{
+		transform: translateX(-50px);
+		opacity: 0;
+	}
+	to{
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+.cek{
+	padding-left: 30px;
+}
+
+.resultCash,
+.cek h2{
+	color: #282828;
+	font-size: 30px;
+/*	text-shadow: 1px 1px 5px  #8f8;*/
 }

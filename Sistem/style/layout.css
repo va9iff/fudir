@@ -17,3 +17,7 @@
 .container .sidebar{
 
 }
+
+.container .content > * {
+	flex: 1;
+}

@@ -24,7 +24,7 @@ class VOverview extends VLit{
 					`)}
 				<br>
 				${this.selected+1}№ Çek <br> 
-				${overview.table+1} Nömrəli masadan ümumi gəlir <b class="f3">${overview.total}₼</b>
+				${overview.table+1} Nömrəli masadan ümumi gəlir <b class="f3"><span class="resultCash">${overview.total}₼</span></b>
 			</div>
 		</div>
 		`
