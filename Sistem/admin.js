@@ -9,6 +9,7 @@ class VAdmin extends VLit{
 		auth: true,
 		newFoodName: "",
 		newFoodPrice: 0,
+		newFoodCat: 0
 	}
 	wipe(e){
 		if (confirm(`Diqqət! OK düyməsinə basmağınız qeyd olunmuş bütün məlumatları siləcək! Dəvam edilsin mi?`)){
@@ -38,6 +39,8 @@ class VAdmin extends VLit{
 	}
 	addFood(e){
 		data.foods[this.newFoodName] = this.newFoodPrice
+		data.categories[this.newFoodCat].push(this.newFoodName)
+
 		save()
 		this.requestUpdate()
 	}
@@ -51,7 +54,7 @@ class VAdmin extends VLit{
 		this.requestUpdate()
 	}
 	removeMasa(e){
-		if (data.orders.at(-1).total && confirm(`${data.orders.length} nömrəli masa silinəcək və onu bütün sifarişləri silinəcək. Dəvam edilsin mi?`))
+		if (data.orders.at(-1).total && !confirm(`${data.orders.length} nömrəli masa silinəcək və onu bütün sifarişləri silinəcək. Dəvam edilsin mi?`)) return null
 		if (data.orders.length < 2) return null
 		data.orders.pop()
 		save()
@@ -67,16 +70,10 @@ class VAdmin extends VLit{
 	}
 	render(){
 		return this.auth ? html` 
-		<button @click=${e=>window.vmain.page="Menyu"}>ADMIN PƏNCƏRƏSİNİ BAĞLA</button>
-		<br><br><br><br>
+		<button @click=${e=>window.vmain.page="Menyu"}><h3>X admin pəncərəsi̇ni̇ şifrələ və bağla</h3></button>
 		<div class="">
 			<hr>
-			Yeni yemək <br><br>
-			<input type="text" placeholder="yeməyin adı" @change=${e=>this.newFoodName = e.target.value}>
-			<input type="number" placeholder="yeməyin qiyməti" @change=${e=>this.newFoodPrice = +e.target.value}>
-			<button @click=${this.addFood}>əlavə et</button>
-			<hr>
-			Menyu <br><br>
+			<h1>Menyu</h1>
 			${Object.keys(data.foods).map(food=>html`
 				<div class="food">
 					<input class="name" .value=${food} @change=${e=>this.nameChange(food, e.target.value)}>
@@ -93,10 +90,25 @@ class VAdmin extends VLit{
 		</div>
 		<div>
 		<hr>
-			<div>Masaların sayı: ${data.orders.length}</div> <br>
+		<h1>Yeni yemək</h1>
+		<input type="text" placeholder="yeməyin adı" @change=${e=>this.newFoodName = e.target.value}>
+		<input type="number" placeholder="yeməyin qiyməti" @change=${e=>this.newFoodPrice = +e.target.value}>
+		<select @change=${e=>this.newFoodCat = e.target.value}>
+			<option value="" disabled>Kateqoriya</option>
+			${Object.keys(data.categories).map((cat,i)=>html`
+				<option value=${cat} ?selected=${i==0}>${cat}</option>
+				`)}
+		</select>
+
+		<button @click=${this.addFood}>əlavə et</button>
+
+		<hr>
+			<h1>Masaların sayı: ${data.orders.length}</h1>
 			<button class="rmvTableBtn" @click= ${this.removeMasa}>Masanın sayını azalt</button>
 			<button class="addTableBtn" @click= ${this.addMasa}>Masa əlavə et</button>
 		</div>
+			<hr>
+		
 		` : html`
 			<h1>Bura xüsusi bir səhifədir. Yalnız adminlər daxil ola bilər. <br><br>
 				Xaiş olunur parolu daxil edin.

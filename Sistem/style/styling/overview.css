@@ -40,3 +40,8 @@ v-overview .resultCash{
 	margin-top: 50px;
 	display: block;
 }
+
+
+v-overview{
+	overflow-y: scroll;
+}

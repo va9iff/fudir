@@ -15,9 +15,18 @@ v-admin input {
 
 
 .addTableBtn{
-	background-color: #6ff;
+	color: #2aae55;
+	border: 2px solid #ddd;
+	background-color: transparent;
 }
 
 .rmvTableBtn{
-	background-color: #f66;
+	color: #ae2a2a;
+	border: 2px solid #ddd;
+	background-color: transparent;
+}
+
+.addTableBtn,
+.rmvTableBtn{
+	font-size: 20px;
 }
