@@ -5,7 +5,12 @@ export const entry = {
 	foods: {
 		Aş: 35,
 		BozBaş: 22,
-		Merci: 9
+		Merci: 9,
+		salat: 6,
+		ayran: 1,
+		dovğa: 1.20,
+		piti: 70,
+		xaş: 49
 	},
 	orders: [
 		{total: 0, foods: {}},
@@ -19,6 +24,6 @@ export const entry = {
 	selectedOrder: 0
 }
 
-// clear()
+clear()
 export var data = load() || entry()
 

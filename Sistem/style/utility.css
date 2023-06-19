@@ -55,3 +55,8 @@ v-overview{
 .f4{
 	font-size: 26px;
 }
+
+.dots{
+	border-bottom: 2px dotted #333;
+	flex: 1;
+}

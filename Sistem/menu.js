@@ -8,6 +8,7 @@ class VMenu extends VLit{
 			${Object.keys(data.foods).map(food=>html`
 				<div class="food">
 					<span class="name">${food}</span>
+					<span class="dots"></span>
 					<span class="price">${data.foods[food]}₼</span>
 				</div>
 				`)}
