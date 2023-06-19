@@ -1,4 +1,4 @@
-import {data, save, VLit, html} from "./v.js"
+import {data, save, VLit, html, price} from "./v.js"
 
 
 class VOverview extends VLit{
@@ -20,11 +20,12 @@ class VOverview extends VLit{
 			</div>
 			<div class="list selectedOrder">
 				${Object.keys(overview.foods).map(food=>html`
-					<span class="orderLine">${overview.foods[food].count}x ${food} ${overview.foods[food].total}m</span>
+					<span class="orderLine">${overview.foods[food].count}x ${food} ${price(overview.foods[food].total)}₼</span>
 					`)}
 				<br>
 				${this.selected+1}№ Çek <br> 
-				${overview.table+1} Nömrəli masadan ümumi gəlir <b class="f3"><span class="resultCash">${overview.total}₼</span></b>
+				${overview.table+1} Nömrəli masadan ümumi gəlir <b class="f3"><span class="resultCash">${price(overview.total)}₼</span></b> <br>
+				<h2 class="resultCash"> Bugünlük ümumi gəlir ${price(data.overview.reduce((acc, curr) => acc + curr.total, 0))}₼</h2>
 			</div>
 		</div>
 		`
