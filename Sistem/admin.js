@@ -6,7 +6,7 @@ console.log('fasaad')
 class VAdmin extends VLit{
 	static properties = {}
 	static props = {
-		auth: true,
+		auth: false,
 		newFoodName: "",
 		newFoodPrice: 0,
 		newFoodCat: 0
@@ -108,7 +108,7 @@ class VAdmin extends VLit{
 			<button class="addTableBtn" @click= ${this.addMasa}>Masa əlavə et</button>
 		</div>
 			<hr>
-		
+
 		` : html`
 			<h1>Bura xüsusi bir səhifədir. Yalnız adminlər daxil ola bilər. <br><br>
 				Xaiş olunur parolu daxil edin.

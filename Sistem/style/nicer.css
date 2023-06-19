@@ -7,6 +7,7 @@
 	margin: 5px;
 	transition: 200ms;
 	color: #222;
+	user-select: none;
 }
 
 .container .sidebar button:hover{
