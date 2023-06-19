@@ -10,7 +10,8 @@ export const entry = {
 		ayran: 1,
 		dovğa: 1.20,
 		piti: 70,
-		xaş: 49
+		xaş: 49,
+		cola: 0.7,
 	},
 	orders: [
 		{total: 0, foods: {}},
@@ -19,6 +20,10 @@ export const entry = {
 		{total: 0, foods: {}},
 		{total: 0, foods: {}},
 		],
+	categories: {
+		"Əsas": ["Aş", "BozBaş", "piti", "xaş"],
+		"İçkilər": ["ayran", "dovğa"]
+	},
 	orderTotal: 0,
 	overview: [{total: 0, table: 0, foods: {}}/*orders*/],
 	selectedOrder: 0

@@ -3,6 +3,7 @@
 }
 
 .container .content {
+	display: flex;
 	flex: 1;
 }
 

@@ -5,13 +5,17 @@ class VMenu extends VLit{
 	render(){
 		return html`
 		<div class="menu">
-			${Object.keys(data.foods).map(food=>html`
+			${
+			Object.keys(data.categories).map(cat=> html`
+				<h2 class="menuHeader">${cat}</h2>
+				${Object.keys(data.foods).map(food=>html`
 				<div class="food">
 					<span class="name">${food}</span>
 					<span class="dots"></span>
 					<span class="price">${data.foods[food]}₼</span>
 				</div>
-				`)}
+				`)}`)
+			}
 		</div>
 		`
 	}
