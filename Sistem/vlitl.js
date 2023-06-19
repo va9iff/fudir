@@ -1,5 +1,3 @@
-import {LitElement, html} from "./lit.js"
-
 class VLit extends LitElement {
 	static props = {} // reactive property: default value
 	static properties = {} // reactive property: options
@@ -30,5 +28,3 @@ class VLit extends LitElement {
 	}
 }
 
-
-export {VLit, html}

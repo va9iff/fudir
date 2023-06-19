@@ -1,3 +1,6 @@
+import {data, save, VLit, html} from "./v.js"
+
+
 console.log('fasaad')
 
 class VAdmin extends VLit{

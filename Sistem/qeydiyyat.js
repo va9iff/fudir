@@ -1,3 +1,5 @@
+import {data, save, VLit, html} from "./v.js"
+
 class VQeydiyyat extends VLit{
 	static properties = {}
 	static props = {

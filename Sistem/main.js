@@ -1,3 +1,10 @@
+import "./menu.js"
+import "./qeydiyyat.js"
+import "./overview.js"
+import "./settings.js"
+import "./admin.js"
+import {data, save, VLit, html} from "./v.js"
+
 const pages = {
 	Menyu: ()=>html`<v-menu></v-menu>`,
 	Qeydiyyat: ()=>html`<v-qeydiyyat></v-qeydiyyat>`,

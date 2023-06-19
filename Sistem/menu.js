@@ -1,3 +1,5 @@
+import {data, save, VLit, html} from "./v.js"
+
 class VMenu extends VLit{
 	static properties = {}
 	render(){

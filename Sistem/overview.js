@@ -1,3 +1,6 @@
+import {data, save, VLit, html} from "./v.js"
+
+
 class VOverview extends VLit{
 	static properties = {}
 	static props = {
