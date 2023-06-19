@@ -43,5 +43,5 @@ v-overview .resultCash{
 
 
 v-overview{
-	overflow-y: scroll;
+	overflow-y: auto;
 }
