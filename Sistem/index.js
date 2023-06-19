@@ -19,7 +19,7 @@ window.entry = () => ({
 	selectedOrder: 0
 })
 
-// clear()
+clear()
 window.data = load() || entry()
 
 
