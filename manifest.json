@@ -1,9 +1,9 @@
 {
-  "name": "Muhasib",
-  "short_name": "Muhasib",
+  "name": "Fudir",
+  "short_name": "Fudir",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#fff",
+  "background_color": "#c4e8d7",
   "description": "Restoran üçün muhasibat proqramı",
   "icons": [
     {
