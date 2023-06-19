@@ -31,6 +31,7 @@ class VMain extends VLit{
 			<div class="main">
 				<div class="container">
 					<div class="sidebar">
+					<img src="./logo.png" alt="" style="max-width: 180px; opacity: 0.5; margin-bottom: 20px">
 						${Object.keys(pages).map(page=>html`
 								<button @click=${e=>this.page=page} ?active=${this.page==page}>
 									${page}
