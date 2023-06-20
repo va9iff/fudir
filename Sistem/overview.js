@@ -6,8 +6,11 @@ class VOverview extends VLit{
 	static props = {
 		selected: 0
 	}
-	render(){
+	constructor(){
+		super()
 		this.selected = data.overview.length - 1
+	}
+	render(){
 		let overview = data.overview[this.selected] || { total: 0, table: 0, foods: {} }
 		console.log(overview)
 		return html`
