@@ -61,9 +61,13 @@ option{
 	align-items: center;
 	justify-content: center;
 	text-align: center;
+	color: #222;
 }
-.adminAuth input{
+.adminAuth input[type="password"]{
 	width: 80%;
+}
+input[type="password"]{
+	text-align: center;
 }
 
 button.closeAdmin{

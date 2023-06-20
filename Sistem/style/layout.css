@@ -21,3 +21,13 @@
 .container .content > * {
 	flex: 1;
 }
+
+::-moz-selection { /* Code for Firefox */
+  color: #ffffff;
+  background: #79f2b5;
+}
+
+::selection {
+  color: #ffffff;
+  background: #79f2b5;
+}

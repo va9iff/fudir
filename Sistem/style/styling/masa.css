@@ -51,7 +51,16 @@ v-qeydiyyat{
 .finishOrder{
 	background-color: #4f8;
 	color: #000;
+	border: none;
+	box-shadow: 3px 3px #333;
+	padding: 12px;
+	transition: 300ms;
 }
+.finishOrder:hover{
+	box-shadow: 7px 7px #333;
+/*	transform: translate(-2px, -2px);*/
+}
+
 .finishOrder:hover{
 }
 .finishOrder:disabled{

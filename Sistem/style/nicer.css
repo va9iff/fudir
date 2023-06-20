@@ -25,3 +25,11 @@
 	align-items: center;
 	justify-content: center;
 }
+
+.sidebar img{
+	max-width: 180px; 
+	opacity: 0.5; 
+	margin-bottom: 20px;
+	pointer-events: none;
+	user-select: none;
+}
