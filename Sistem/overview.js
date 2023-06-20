@@ -7,6 +7,7 @@ class VOverview extends VLit{
 		selected: 0
 	}
 	render(){
+		this.selected = data.overview.length - 1
 		let overview = data.overview[this.selected] || { total: 0, table: 0, foods: {} }
 		console.log(overview)
 		return html`
