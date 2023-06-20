@@ -64,7 +64,7 @@ option{
 	color: #222;
 }
 .adminAuth input[type="password"]{
-	width: 80%;
+	min-width: 100%;
 }
 input[type="password"]{
 	text-align: center;

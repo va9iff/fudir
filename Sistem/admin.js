@@ -130,11 +130,11 @@ class VAdmin extends VLit{
 		` : html`
 			<div class="adminAuth">
 			<h1>Xüsusi səhifə</h1>
-			<h3>Bura yalnız adminlər daxil ola bilər.<br>
-				Xaiş olunur parolu daxil edin.
-			</h3>
-			Parol:
+			<p class="f2">Bura yalnız adminlər daxil ola bilər.<br>
+				Xaiş olunur parolu daxil edin. <br><br>
+			<span class="f1">Parol: <br></span>
 			<input type="password" @change=${this.checkAuth}>
+			</p>
 			</div>
 		`
 	}

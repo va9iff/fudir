@@ -47,10 +47,28 @@ v-overview{
 }
 
 
-v-overview .orders .order .delete{
+details.delete > summary {
+  list-style: none;
+  padding: 0 3px;
+}
+
+v-overview .orders .order details summary.delete{
 	visibility: hidden
 }
 
-v-overview .orders .order:hover .delete{
+v-overview .orders .order:hover details summary.delete{
 	visibility: visible
+}
+
+
+v-overview .orders .order details[open] summary.delete {
+	visibility: visible;
+}
+
+v-overview .orders .order details div.deletePopup {
+	background-color: #ddd;
+	padding: 7px;
+	border-radius: 4px;
+	position: absolute;
+	border: 1px solid #666;
 }

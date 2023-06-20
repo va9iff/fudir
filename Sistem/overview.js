@@ -11,6 +11,7 @@ class VOverview extends VLit{
 		this.selected = data.overview.length - 1
 	}
 	deleteOrder(order, e){
+		if (e.target.value != "2024") return this.requestUpdate()
 		// console.log(data.orders.includes(order))
 		if (!confirm(`${order.total}₼ məbləğindəki çek gündəlikdən silinsin mi? 
 (${order.table} nömrəli masa)`)) return this.requestUpdate()
@@ -43,7 +44,16 @@ class VOverview extends VLit{
 						<span class="masaPart">${order.table+1}</span> 
 						<span class="totalPart">${order.total}₼</span>
 						<span class="totalPart">${order.time}</span>
-						<button class="delete" @click=${e => this.deleteOrder(order, e)}>sil</button>
+						<details>
+							<summary class="delete">
+								sil <br>
+							</summary>
+							<div class="deletePopup">
+								silmək üçün admin parolunu <br>
+								girməyiniz lazımdır <br>
+								<input type="password" @input=${e => this.deleteOrder(order, e)}>
+							</div>
+						</details>
 					</span>
 				`)}
 			</div>
