@@ -9,7 +9,8 @@ class VAdmin extends VLit{
 		auth: false,
 		newFoodName: "",
 		newFoodPrice: 0,
-		newFoodCat: 0
+		newFoodCat: 0,
+		newCatName: "",
 	}
 	wipe(e){
 		if (confirm(`Diqqət! OK düyməsinə basmağınız qeyd olunmuş bütün məlumatları siləcək! Dəvam edilsin mi?`)){
@@ -33,6 +34,7 @@ class VAdmin extends VLit{
 	}
 	deleteFood(food){
 		delete data.foods[food]
+		Object.keys(data.categories).map(cat=>data.categories[cat]=data.categories[cat].filter(f=>f!=food))
 		save()
 		alert(`"${food}" adlı yemək menyudan silindi.`)
 		this.requestUpdate()
@@ -68,6 +70,12 @@ class VAdmin extends VLit{
 		save()
 		this.requestUpdate()
 	}
+	addCat(e){
+		data.categories[this.newCatName] = []
+		this.newCatName = ""
+		save()
+		this.requestUpdate()
+	}
 	close(e){
 		this.auth = false
 		this.requestUpdate()
@@ -85,7 +93,7 @@ class VAdmin extends VLit{
 					<input class="price" .value=${data.foods[food]} @change=${e=>this.priceChange(food, e.target.value)}>
 					<button class="delete" @click = ${e=>this.deleteFood(food)}>sil</button>
 					<select @change=${e=>this.catChange(food, e)}>
-						<option value="" disabled>Kateqoriya</option>
+						<option value="" disabled>   ---Kateqoriya---   </option>
 						${Object.keys(data.categories).map(cat=>html`
 							<option value=${cat} ?selected=${data.categories[cat].includes(food)}>${cat}</option>
 							`)}
@@ -106,6 +114,11 @@ class VAdmin extends VLit{
 		</select>
 
 		<button @click=${this.addFood}>əlavə et</button>
+
+		<hr>
+		<h1>Yeni kateqoriya</h1>
+		<input type="text" placeholder="kateqoriyanın adı" @change=${e=>this.newCatName = e.target.value} .value=${this.newCatName}>
+		<button @click=${this.addCat}>əlavə et</button>
 
 		<hr>
 			<h1>Masaların sayı: ${data.orders.length}</h1>

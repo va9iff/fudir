@@ -15,11 +15,25 @@ v-admin input {
 /*	font-size: 16px;*/
 }
 
+select{
+	background-color: #d1ffe9;
+}
+
+option{
+	background-color: #ffffff;
+	font-size: 16px;
+	animation: optAnim 300ms;
+}
 
 .addTableBtn{
 	color: #2aae55;
 	border: 2px solid #ddd;
 	background-color: transparent;
+}
+.addTableBtn:active{
+	color: #fff;
+	background-color: #2aff55;
+	transition: 0ms;
 }
 
 .rmvTableBtn{
@@ -28,9 +42,16 @@ v-admin input {
 	background-color: transparent;
 }
 
+.rmvTableBtn:active{
+	color: #fff;
+	background-color: #ff2a2a;
+	transition: 0ms;
+}
+
 .addTableBtn,
 .rmvTableBtn{
 	font-size: 20px;
+	transition: 200ms;
 }
 
 .adminAuth{
