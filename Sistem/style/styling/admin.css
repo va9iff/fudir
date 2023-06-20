@@ -85,3 +85,7 @@ button.closeAdmin{
 .closeAdmin h3{
 	flex: 1;
 }
+
+.order.header{
+	border-bottom: 2px solid #ddd;
+}

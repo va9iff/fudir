@@ -30,6 +30,8 @@ class VQeydiyyat extends VLit{
 	done(e){
 		let order = data.orders[this.selectedOrder]
 		order.table = this.selectedOrder
+		let today = new Date()
+		order.time = today.getHours() + ":" + today.getMinutes() //+ ":" + today.getSeconds();
 		data.overview.push(order)
 		data.orders[this.selectedOrder] = {total: 0, foods: {}}
 		save()

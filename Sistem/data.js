@@ -37,6 +37,6 @@ export const entry = {
 	selectedOrder: 0
 }
 
-clear()
+// clear()
 export var data = load() || entry()
 
