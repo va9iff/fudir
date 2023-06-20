@@ -68,9 +68,14 @@ class VAdmin extends VLit{
 		save()
 		this.requestUpdate()
 	}
+	close(e){
+		this.auth = false
+		this.requestUpdate()
+		// window.vmain.page="Menyu"
+	}
 	render(){
 		return this.auth ? html` 
-		<button @click=${e=>window.vmain.page="Menyu"}><h3>X admin pəncərəsi̇ni̇ şifrələ və bağla</h3></button>
+		<button @click=${this.close} class="closeAdmin"><span className="toLef">X</span><h3> Admin pəncərəsi̇ni̇ şifrələ və bağla</h3></button>
 		<div class="">
 			<hr>
 			<h1>Menyu</h1>
@@ -110,11 +115,14 @@ class VAdmin extends VLit{
 			<hr>
 
 		` : html`
-			<h1>Bura xüsusi bir səhifədir. Yalnız adminlər daxil ola bilər. <br><br>
+			<div class="adminAuth">
+			<h1>Xüsusi səhifə</h1>
+			<h3>Bura yalnız adminlər daxil ola bilər.<br>
 				Xaiş olunur parolu daxil edin.
-			</h1>
+			</h3>
 			Parol:
-			<input type="text" @change=${this.checkAuth}>
+			<input type="password" @change=${this.checkAuth}>
+			</div>
 		`
 	}
 }

@@ -60,3 +60,9 @@ v-overview{
 	border-bottom: 2px dotted #333;
 	flex: 1;
 }
+.toLeft{
+	margin-right: auto;
+}
+.toRight{
+	margin-left: auto;
+}
