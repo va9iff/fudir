@@ -30,6 +30,10 @@ class VOverview extends VLit{
 		return html`
 		<div class="columns">
 			<div class="list orders">
+					<span class="order">
+						<span class="numberPart o5"> Nömrə </span> <span class="masaPart">Masa</span> <span class="totalPart">Cəm</span>
+						<button class="delete" @click=${e => this.deleteOrder(order, e)} style="visibility: hidden">sil</button>
+					</span>
 				${data.overview.map((order, orderI)=>html`
 					<span class="order" ?active=${orderI==this.selected} @click = ${e=>this.selected = orderI}>
 						<span class="numberPart o5"> ${orderI+1}№ </span> <span class="masaPart">${order.table+1}</span> <span class="totalPart">${order.total}₼</span>
