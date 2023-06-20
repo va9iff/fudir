@@ -45,3 +45,12 @@ v-overview .resultCash{
 v-overview{
 	overflow-y: auto;
 }
+
+
+v-overview .orders .order .delete{
+	visibility: hidden
+}
+
+v-overview .orders .order:hover .delete{
+	visibility: visible
+}

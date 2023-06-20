@@ -10,15 +10,30 @@ class VOverview extends VLit{
 		super()
 		this.selected = data.overview.length - 1
 	}
+	deleteOrder(order, e){
+		// console.log(data.orders.includes(order))
+		if (!confirm(`${order.total}₼ məbləğindəki çek gündəlikdən silinsin mi? 
+(${order.table} nömrəli masa)`)) return this.requestUpdate()
+		data.overview=
+			data.overview.filter(o=>
+				!(
+					o.total==order.total&&
+					o.table==order.table
+					)
+				)
+		// save()
+		this.requestUpdate()
+	}
 	render(){
 		let overview = data.overview[this.selected] || { total: 0, table: 0, foods: {} }
-		console.log(overview)
+		// console.log(overview)
 		return html`
 		<div class="columns">
 			<div class="list orders">
 				${data.overview.map((order, orderI)=>html`
 					<span class="order" ?active=${orderI==this.selected} @click = ${e=>this.selected = orderI}>
 						<span class="numberPart o5"> ${orderI+1}№ </span> <span class="masaPart">${order.table+1}</span> <span class="totalPart">${order.total}₼</span>
+						<button class="delete" @click=${e => this.deleteOrder(order, e)}>sil</button>
 					</span>
 				`)}
 			</div>
