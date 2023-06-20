@@ -27,7 +27,7 @@ class VAdmin extends VLit{
 		this.requestUpdate()
 	}
 	priceChange(food, price){
-		data.foods[food] = price
+		data.foods[food] = +price
 		save()
 		alert(`"${food}" adlı yeməyin qiyməti "${price}" olaraq dəyişdirildi.`)
 		this.requestUpdate()
