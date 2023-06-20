@@ -1,9 +1,13 @@
 import {data, save, VLit, html} from "./v.js"
 
 class VQeydiyyat extends VLit{
-	static properties = {}
-	static props = {
-		selectedOrder: data.selectedOrder
+	static properties = {
+		selectedOrder: {}
+	}
+	static props = {}
+	constructor(){
+		super()
+		this.selectedOrder = data.selectedOrder
 	}
 	foodToOrder(food){
 		let order = data.orders[this.selectedOrder]
@@ -39,12 +43,13 @@ class VQeydiyyat extends VLit{
 		window.vmain.page = "Gündəlik"
 	}
 	selectMasa(i){
-		this.selectedOrder = i
 		data.selectedOrder = i
+		this.selectedOrder = data.selectedOrder
+		console.log(this.selectedOrder, data.selectedOrder)
 		save()
 	}
 	render(){
-		let order = data.orders.at(this.selectedOrder)
+		let order = data.orders[this.selectedOrder]
 		return html`
 			<div class="masalar">
 				${data.orders.map((order,i)=>html`

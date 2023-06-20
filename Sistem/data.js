@@ -40,3 +40,4 @@ export const entry = {
 // clear()
 export var data = load() || entry()
 
+window.data = data
