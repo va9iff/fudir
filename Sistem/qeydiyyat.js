@@ -1,4 +1,4 @@
-import {data, save, VLit, html} from "./v.js"
+import {data, save, VLit, html, price} from "./v.js"
 
 class VQeydiyyat extends VLit{
 	static properties = {
@@ -74,7 +74,7 @@ class VQeydiyyat extends VLit{
 					<span>${this.selectedOrder+1} nömrəli masanın çeki <br><br></span>
 					${Object.keys(order.foods).map(food=>html`
 						<span class="addedFood">
-						<button @click=${e=>this.removeFromOrder(food)} class="delete">-</button> ${order.foods[food].count}x ${food} ${order.foods[food].total}₼
+						<button @click=${e=>this.removeFromOrder(food)} class="delete">-</button> ${price(order.foods[food].count)}x ${food} ${order.foods[food].total}₼
 						</span>
 					`)}
 					<span class="dayResult">${order.total ? html`<h2>${order.total}₼</h2>` : html`Masa boşdur!<br><br><h2>0₼</h2>`} <button class="btn finishOrder" @click=${this.done} ?disabled=${!order.total}>Hesabı Tamamla</button></span> 
