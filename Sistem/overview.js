@@ -50,7 +50,15 @@ class VOverview extends VLit{
 		const formattedDate = `${day}.${month}.${year}`;
 
 		console.log(csv)
-		downloadBlob(csv, `${formattedDate}.csv`, 'text/csv;charset=utf-8;')
+		// downloadBlob(csv, `${formattedDate}.csv`, 'text/csv;charset=utf-8;')
+		var csvString = csv;
+		var universalBOM = "\uFEFF";
+		var a = window.document.createElement('a');
+		a.setAttribute('href', 'data:text/csv; charset=utf-8,' + encodeURIComponent(universalBOM+csvString));
+		a.setAttribute('download', `${formattedDate}.csv`);
+		window.document.body.appendChild(a);
+		a.click();
+
 	}
 	unsafeExport(e){
 		this.export()
