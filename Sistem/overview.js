@@ -40,7 +40,7 @@ class VOverview extends VLit{
 	}
 	export(e){
 		let csv = data.overview.map((order, oi)=>Object.keys(order.foods).map(foodName=>
-			`${oi}, ${order.table}, ${order.time}, ${foodName}, ${order.foods[foodName].total}`
+			`${oi}; ${order.table}; ${order.time}; ${foodName}; ${order.foods[foodName].total}`
 			).join('\n')).join('\n')
 
 		const today = new Date();
