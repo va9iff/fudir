@@ -1,7 +1,11 @@
-export const load = () => JSON.parse(localStorage.getItem("V-DATA") || JSON.stringify(entry))
+export const load = () => JSON.parse(localStorage.getItem("V-DATA") || JSON.stringify(entry()))
 export const save = () => localStorage.setItem("V-DATA", JSON.stringify(data));
 export const clear = () => localStorage.clear()
-export const entry = {
+export const reset = () => {
+	data = entry()
+	save()
+}
+export const entry = () => ({
 	foods: {
 		Aş: 35,
 		BozBaş: 22,
@@ -35,9 +39,9 @@ export const entry = {
 	orderTotal: 0,
 	overview: [/*{total: 0, table: 0, foods: {}}*//*orders*/],
 	selectedOrder: 0
-}
+})
 
 // clear()
-export var data = load() || entry()
+export var data = load() // load will either parse from V-DATA or parse the entry as string
 
 window.data = data

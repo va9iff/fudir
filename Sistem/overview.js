@@ -1,10 +1,23 @@
-import {data, save, VLit, html, price} from "./v.js"
+import {data, save, reset, VLit, html, price} from "./v.js"
+
+function downloadBlob(content, filename, contentType) {
+  // Create a blob
+  var blob = new Blob([content], { type: contentType });
+  var url = URL.createObjectURL(blob);
+
+  // Create a link to download it
+  var pom = document.createElement('a');
+  pom.href = url;
+  pom.setAttribute('download', filename);
+  pom.click();
+}
 
 
 class VOverview extends VLit{
 	static properties = {}
 	static props = {
-		selected: 0
+		selected: 0,
+		willWipe: false
 	}
 	constructor(){
 		super()
@@ -23,6 +36,30 @@ class VOverview extends VLit{
 					)
 				)
 		// save()
+		this.requestUpdate()
+	}
+	export(e){
+		let csv = data.overview.map((order, oi)=>Object.keys(order.foods).map(foodName=>
+			`${oi}, ${order.table}, ${order.time}, ${foodName}, ${order.foods[foodName].total}`
+			).join('\n')).join('\n')
+
+		const today = new Date();
+		const day = String(today.getDate()).padStart(2, '0');
+		const month = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+		const year = today.getFullYear();
+		const formattedDate = `${day}.${month}.${year}`;
+
+		console.log(csv)
+		downloadBlob(csv, `${formattedDate}.csv`, 'text/csv;charset=utf-8;')
+	}
+	unsafeExport(e){
+		this.export()
+		this.willWipe = true
+		setTimeout(()=>{
+			reset()
+			this.willWipe = false
+			this.requestUpdate()
+		}, 5000)
 		this.requestUpdate()
 	}
 	render(){
@@ -65,6 +102,9 @@ class VOverview extends VLit{
 				${this.selected+1}№ Çek <br> 
 				${overview.table+1} Nömrəli masadan ümumi gəlir <b class="f3"><span class="resultCash">${price(overview.total)}₼</span></b> <br>
 				<h2 class="resultCash"> Bugünlük ümumi gəlir ${price(data.overview.reduce((acc, curr) => acc + curr.total, 0))}₼</h2>
+				<button @click=${this.export}>csv olaraq export et</button>
+				<button @click=${this.unsafeExport}>csv olaraq export et və yeni gün başlat</button>
+				${this.willWipe ? html`<span class="wipeIn">5 saniyə içində yeni gün başladılacaq</span>` : ""}
 			</div>
 		</div>
 		`

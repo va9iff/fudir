@@ -72,3 +72,26 @@ v-overview .orders .order details div.deletePopup {
 	position: absolute;
 	border: 1px solid #666;
 }
+
+.wipeIn{
+	animation: wipeInAnim 3000ms infinite;
+	text-align: center;
+	border-radius: 4px;
+	margin: 4px;
+	padding: 4px;
+	background: linear-gradient(90deg, #3ff, #3f3, #3ff);
+/*	color: #fff;*/
+/*	background-position: 50% 50%;*/
+/*	background-position: 100px 5px; */
+
+/*	background-repeat: no-repeat;*/
+}
+@keyframes wipeInAnim{
+	from{
+		background-position: 0 0;
+	}
+	to{
+		background-position: 1000px 5px; 
+
+	}
+}
