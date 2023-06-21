@@ -27,7 +27,7 @@ class VOverview extends VLit{
 		if (e.target.value != "2024") return this.requestUpdate()
 		// console.log(data.orders.includes(order))
 		if (!confirm(`${order.total}₼ məbləğindəki çek gündəlikdən silinsin mi? 
-(${order.table} nömrəli masa)`)) return this.requestUpdate()
+(${order.table+1} nömrəli masa)`)) return this.requestUpdate()
 		data.overview=
 			data.overview.filter(o=>
 				!(
