@@ -39,9 +39,12 @@ class VOverview extends VLit{
 		this.requestUpdate()
 	}
 	export(e){
-		let csv = data.overview.map((order, oi)=>Object.keys(order.foods).map(foodName=>
+		let csv = 
+		`ID, Masa, Saat, Yemək, Məbləğ`
+		+ data.overview.map((order, oi)=>Object.keys(order.foods).map(foodName=>
 			`${oi}; ${order.table}; ${order.time}; ${foodName}; ${order.foods[foodName].total}`
-			).join('\n')).join('\n')
+			).join('\n')).join('\n') 
+		+ `-1, -1, 00:00, Ümumi; ${price(data.overview.reduce((acc, curr) => acc + curr.total, 0))}`
 
 		const today = new Date();
 		const day = String(today.getDate()).padStart(2, '0');
