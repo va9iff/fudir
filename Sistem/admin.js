@@ -6,11 +6,12 @@ console.log('fasaad')
 class VAdmin extends VLit{
 	static properties = {}
 	static props = {
-		auth: false,
+		auth: true,
 		newFoodName: "",
 		newFoodPrice: 0,
 		newFoodCat: 0,
 		newCatName: "",
+		newSetName: "",
 	}
 	wipe(e){
 		if (confirm(`Diqqət! OK düyməsinə basmağınız qeyd olunmuş bütün məlumatları siləcək! Dəvam edilsin mi?`)){
@@ -83,7 +84,7 @@ class VAdmin extends VLit{
 		// window.vmain.page="Menyu"
 	}
 	newSet(e){
-		data.sets.push({name: "yeni set", setFoods: [], discount: 0})
+		data.sets.push({name: this.newSetName, setFoods: [], discount: 0})
 		this.requestUpdate()
 	}
 	render(){
@@ -145,22 +146,26 @@ class VAdmin extends VLit{
 								this.requestUpdate()
 							}}>
 								${Object.keys(data.foods).map(f=>html`
-									<option value="${f}">${f}</option>
+									<option value="${f}" ?selected=${f==sf.name}>${f}</option>
 									`)}
 							</select>
 						</div>
 						`)}
 					<div>
-					əlavə
-						<select .onchange=${e=>set.setFoods.push({name: e.target.value, count: 1})&&this.requestUpdate()}>
+					Setə yemək əlavə et
+						<select @change=${e=>{
+							console.log(e.target.value)
+							set.setFoods.push({name: e.target.value, count: 1})
+							this.requestUpdate()}}>
 							${Object.keys(data.foods).map(f=>html`
-								<option value="${f}">${f}</option>
+								<option value=${f}>${f}</option>
 								`)}
 						</select>
 					</div>
 				</div>
 				`)}		
 			<br>
+			<input type="text" .value=${this.newSetName} placeholder="set adı" @change=${e=>this.newSetName=e.target.value}>
 			<button @click=${this.newSet}>yeni set</button>
 		</div>
 		<h1>Yeni yemək</h1>
