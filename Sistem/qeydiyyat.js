@@ -19,6 +19,17 @@ class VQeydiyyat extends VLit{
 		save()
 		this.requestUpdate()
 	}
+	setToOrder(set){
+		let order = data.orders[this.selectedOrder]
+		order.foods[set.name] ??= {count: 0, total: 0}
+		order.foods[set.name].count++
+		order.foods[set.name].total += price(set.setFoods.reduce((curr,acc)=>curr+data.foods[acc.name]*acc.count,0)-set.discount)
+		order.total = Object.keys(order.foods).reduce((acc,curr)=>acc+order.foods[curr].total,0)
+
+		save()
+		this.requestUpdate()
+
+	}
 	removeFromOrder(food){
 		let order = data.orders[this.selectedOrder]
 		order.foods[food].count--
@@ -69,6 +80,14 @@ class VQeydiyyat extends VLit{
 							</div>
 						</details>
 					`)}
+						<details>
+						<summary>Setlər</summary>
+							<div class="list addingFoods">
+								${data.sets.map(set=>html`
+									<button @click = ${e=>{this.setToOrder(set)}} class="addingFood"><span class="plus">+</span>${set.name} ${price(set.setFoods.reduce((curr,acc)=>curr+data.foods[acc.name]*acc.count,0)-set.discount)}₼</button>
+								`)}
+							</div>
+						</details>
 				</div>
 				<div class="list cek">
 					<span>${this.selectedOrder+1} nömrəli masanın çeki <br><br></span>
