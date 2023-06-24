@@ -1,3 +1,3 @@
 export * from "./data.js"
 export * from "./vlit.js"
-export const price = n => n.toFixed(2)
+export const price = x => Number.parseFloat(x).toFixed(2)
