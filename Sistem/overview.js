@@ -92,9 +92,10 @@ class VOverview extends VLit {
 			Object.keys(order.foods).map(foodName => ({
 				name: foodName,
 				count: order.foods[foodName].count,
-				price: data.foods[foodName] * order.foods[foodName].count,
+				price: data.sets.find(set=>set.name==foodName)?.setFoods.reduce((curr,acc)=>curr+data.foods[acc.name]*acc.count,0)||data.foods[foodName] * order.foods[foodName].count,
 			}))
 		).flat()
+		console.log(xulase)
 		const today = new Date()
 		const day = String(today.getDate()).padStart(2, "0")
 		const month = String(today.getMonth() + 1).padStart(2, "0") // January is 0!
