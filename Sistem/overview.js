@@ -47,7 +47,7 @@ class VOverview extends VLit {
 					Object.keys(order.foods)
 						.map(
 							foodName =>
-								`${oi}; ${order.table}; ${order.time}; ${foodName}; ${order.foods[foodName].total}`
+								`${oi}; ${order.table+1}; ${order.time}; ${foodName}; ${order.foods[foodName].total}`
 						)
 						.join("\n")
 				)
