@@ -1,4 +1,4 @@
-import {data, save, reset, VLit, html, price} from "./v.js"
+import {data, save, reset, entry, VLit, html, price} from "./v.js"
 
 function downloadBlob(content, filename, contentType) {
   // Create a blob
@@ -67,7 +67,11 @@ class VOverview extends VLit{
 		this.export()
 		this.willWipe = true
 		setTimeout(()=>{
-			reset()
+			data.overview = entry().overview
+			data.orderTotal = entry().orderTotal
+			data.selectedOrder = entry().selectedOrder
+			data.orders = data.orders.map(_=>({total: 0, foods: {}}))
+			save()
 			this.willWipe = false
 			this.requestUpdate()
 		}, 5000)
