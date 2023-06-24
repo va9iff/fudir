@@ -45,6 +45,14 @@ export const entry = () => ({
 			{name: "portağal", count: 1}
 			],
 		discount: 0
+	},
+	{
+		name: "Tələbə menyusu",
+		setFoods: [
+			{name: "ayran", count: 1},
+			{name: "portağal", count: 1}
+			],
+		discount: 0
 	}],
 	selectedOrder: 0
 })

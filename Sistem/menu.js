@@ -1,4 +1,4 @@
-import {data, save, VLit, html} from "./v.js"
+import {data, save, price, VLit, html} from "./v.js"
 
 class VMenu extends VLit{
 	static properties = {}
@@ -16,6 +16,22 @@ class VMenu extends VLit{
 				</div>
 				`)}`)
 			}
+
+			<h2 class="menuHeader">Setlər</h2>
+			${data.sets.map(set=>html`
+			<div class="food" style="align-items:center; gap: 10px">
+				<span class="name"><b>${set.name}</b>
+					<br>
+					${set.setFoods.map(sf=>html`${sf.name} x${sf.count}<br>`)}
+				</span>
+				<span class="dotsssssss"></span>
+				<span class="price" style="margin-left: auto">
+					<s>${price(set.setFoods.reduce((curr,acc)=>curr+data.foods[acc.name]*acc.count,0))}₼</s>
+					<b>${price(set.setFoods.reduce((curr,acc)=>curr+data.foods[acc.name]*acc.count,0)-set.discount)}₼</b>
+				</span>
+			</div>
+			`)}
+			
 		</div>
 		`
 	}
