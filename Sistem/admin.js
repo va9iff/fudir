@@ -41,8 +41,9 @@ class VAdmin extends VLit{
 	}
 	addFood(e){
 		data.foods[this.newFoodName] = this.newFoodPrice
-		data.categories[this.newFoodCat].push(this.newFoodName)
-
+		this.newFoodName = ""
+		this.requestUpdate()
+		if (this.newFoodCat) data.categories[this.newFoodCat].push(this.newFoodName)
 		save()
 		this.requestUpdate()
 	}
@@ -163,7 +164,7 @@ class VAdmin extends VLit{
 			<button @click=${this.newSet}>yeni set</button>
 		</div>
 		<h1>Yeni yemək</h1>
-		<input type="text" placeholder="yeməyin adı" @change=${e=>this.newFoodName = e.target.value}>
+		<input type="text" placeholder="yeməyin adı" @change=${e=>this.newFoodName = e.target.value} .value=${this.newFoodName}>
 		<input type="number" placeholder="yeməyin qiyməti" @change=${e=>this.newFoodPrice = +e.target.value}>
 		<select @change=${e=>this.newFoodCat = e.target.value}>
 			<option value="" disabled>Kateqoriya</option>
