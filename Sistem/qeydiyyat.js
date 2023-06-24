@@ -14,7 +14,9 @@ class VQeydiyyat extends VLit{
 		order.foods[food] ??= {count: 0, total: 0}
 		order.foods[food].count++
 		order.foods[food].total += data.foods[food]
-		order.total = Object.keys(order.foods).reduce((acc,curr)=>acc+order.foods[curr].total,0)
+		order.foods[food].total = price(order.foods[food].total)
+
+		order.total = price(Object.keys(order.foods).reduce((acc,curr)=>acc+order.foods[curr].total,0))
 
 		save()
 		this.requestUpdate()
@@ -24,7 +26,7 @@ class VQeydiyyat extends VLit{
 		order.foods[set.name] ??= {count: 0, total: 0}
 		order.foods[set.name].count++
 		order.foods[set.name].total += price(set.setFoods.reduce((curr,acc)=>curr+data.foods[acc.name]*acc.count,0)-set.discount)
-		order.total = Object.keys(order.foods).reduce((acc,curr)=>acc+order.foods[curr].total,0)
+		order.total = price(Object.keys(order.foods).reduce((acc,curr)=>acc+order.foods[curr].total,0))
 
 		save()
 		this.requestUpdate()
@@ -35,7 +37,7 @@ class VQeydiyyat extends VLit{
 		order.foods[food].count--
 		order.foods[food].total -= data.foods[food]
 		if (order.foods[food].count==0) delete order.foods[food]
-		order.total = Object.keys(order.foods).reduce((acc,curr)=>acc+order.foods[curr].total,0)
+		order.total = price(Object.keys(order.foods).reduce((acc,curr)=>acc+order.foods[curr].total,0))
 
 
 		save()

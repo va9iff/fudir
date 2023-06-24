@@ -21,14 +21,15 @@ class VAdmin extends VLit{
 		this.requestUpdate()
 	}
 	nameChange(food, name){
+		// we can't change name. we use it as a key to get food and its price
 		data.foods[name] = data.foods[food]
 		delete data.foods[food]
 		save()
 		alert(`"${food}" adlı yeməyin adı "${name}" olaraq dəyişdirildi.`)
 		this.requestUpdate()
 	}
-	priceChange(food, price){
-		data.foods[food] = +price
+	priceChange(food, _price){
+		data.foods[food] = price(_price)
 		save()
 		alert(`"${food}" adlı yeməyin qiyməti "${price}" olaraq dəyişdirildi.`)
 		this.requestUpdate()
@@ -41,7 +42,7 @@ class VAdmin extends VLit{
 		this.requestUpdate()
 	}
 	addFood(e){
-		data.foods[this.newFoodName] = this.newFoodPrice
+		data.foods[this.newFoodName] = price(this.newFoodPrice)
 		this.newFoodName = ""
 		this.requestUpdate()
 		if (this.newFoodCat) data.categories[this.newFoodCat].push(this.newFoodName)
