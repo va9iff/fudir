@@ -89,3 +89,7 @@ button.closeAdmin{
 .order.header{
 	border-bottom: 2px solid #ddd;
 }
+
+v-admin .s{
+	width: 3em;
+}

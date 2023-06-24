@@ -1,4 +1,4 @@
-import {data, save, VLit, html} from "./v.js"
+import {data, save, VLit, html, price} from "./v.js"
 
 
 console.log('fasaad')
@@ -81,6 +81,10 @@ class VAdmin extends VLit{
 		this.requestUpdate()
 		// window.vmain.page="Menyu"
 	}
+	newSet(e){
+		data.sets.push({name: "yeni set", setFoods: [], discount: 0})
+		this.requestUpdate()
+	}
 	render(){
 		return this.auth ? html` 
 		<button @click=${this.close} class="closeAdmin"><span className="toLef">X</span><h3> Admin pəncərəsi̇ni̇ şifrələ və bağla</h3></button>
@@ -89,8 +93,8 @@ class VAdmin extends VLit{
 			<h1>Menyu</h1>
 			${Object.keys(data.foods).map(food=>html`
 				<div class="food">
-					<input class="name" .value=${food} @change=${e=>this.nameChange(food, e.target.value)}>
-					<input class="price" .value=${data.foods[food]} @change=${e=>this.priceChange(food, e.target.value)}>
+					<input class="name" .value=${food} disabled>
+					<input class="price" type="number" .value=${data.foods[food]} @change=${e=>this.priceChange(food, e.target.value)}>
 					<button class="delete" @click = ${e=>this.deleteFood(food)}>sil</button>
 					<select @change=${e=>this.catChange(food, e)}>
 						<option value="" disabled>   ---Kateqoriya---   </option>
@@ -103,6 +107,61 @@ class VAdmin extends VLit{
 		</div>
 		<div>
 		<hr>
+		<h1>Setlər</h1>
+		<div>
+			${data.sets.map(set=>html`
+				<div>
+				<br>
+					<button class="delete" @click=${e=>{
+						data.sets = data.sets.filter(s=>s!=set)
+						this.requestUpdate()
+					}}>sil</button> ${set.name}
+					<s>${price(set.setFoods.reduce((curr,acc)=>curr+data.foods[acc.name]*acc.count,0))}₼</s>
+					<b>${price(set.setFoods.reduce((curr,acc)=>curr+data.foods[acc.name]*acc.count,0)-set.discount)}₼</b>
+					<br>
+					endirim: ₼<input type="number" .value=${set.discount} @change=${e=>{
+						set.discount=e.target.value
+						this.requestUpdate()
+					}}>
+
+					${set.setFoods.map((sf,i)=>html`
+						<div>
+							<input type="text" disabled .value=${sf.name}>
+							<input type="number" class="s"
+								.value = ${sf.count} 
+								@change = ${e=>{
+									sf.count=+e.target.value
+									this.requestUpdate()
+									save()
+								}}
+								>
+						<button class="delete" @click=${e=> {
+							set.setFoods.splice(i,1)
+							save()
+							this.requestUpdate()}}>sil</button>
+							<select @change=${e=>{
+								sf.name = e.target.value 
+								this.requestUpdate()
+							}}>
+								${Object.keys(data.foods).map(f=>html`
+									<option value="${f}">${f}</option>
+									`)}
+							</select>
+						</div>
+						`)}
+					<div>
+					əlavə
+						<select .onchange=${e=>set.setFoods.push({name: e.target.value, count: 1})&&this.requestUpdate()}>
+							${Object.keys(data.foods).map(f=>html`
+								<option value="${f}">${f}</option>
+								`)}
+						</select>
+					</div>
+				</div>
+				`)}		
+			<br>
+			<button @click=${this.newSet}>yeni set</button>
+		</div>
 		<h1>Yeni yemək</h1>
 		<input type="text" placeholder="yeməyin adı" @change=${e=>this.newFoodName = e.target.value}>
 		<input type="number" placeholder="yeməyin qiyməti" @change=${e=>this.newFoodPrice = +e.target.value}>

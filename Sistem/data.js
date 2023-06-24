@@ -38,10 +38,18 @@ export const entry = () => ({
 	},
 	orderTotal: 0,
 	overview: [/*{total: 0, table: 0, foods: {}}*//*orders*/],
+	sets: [{
+		name: "Tələbə menyusu",
+		setFoods: [
+			{name: "ayran", count: 1},
+			{name: "portağal", count: 1}
+			],
+		discount: 0
+	}],
 	selectedOrder: 0
 })
 
-// clear()
+clear()
 export var data = load() // load will either parse from V-DATA or parse the entry as string
 
 window.data = data
