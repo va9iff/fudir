@@ -67,7 +67,7 @@ class VAdmin extends VLit{
 		for (let cat in data.categories){
 			data.categories[cat] = data.categories[cat].filter(f=>f!=food)
 		}
-		data.categories[e.target.value].push(food)
+		if (e.target.value) data.categories[e.target.value].push(food)
 		save()
 		this.requestUpdate()
 	}
@@ -98,7 +98,7 @@ class VAdmin extends VLit{
 					<input class="price" type="number" .value=${data.foods[food]} @change=${e=>this.priceChange(food, e.target.value)}>
 					<button class="delete" @click = ${e=>this.deleteFood(food)}>sil</button>
 					<select @change=${e=>this.catChange(food, e)}>
-						<option value="" disabled>   ---Kateqoriya---   </option>
+						<option value="">   ---Kateqoriya---   </option>
 						${Object.keys(data.categories).map(cat=>html`
 							<option value=${cat} ?selected=${data.categories[cat].includes(food)}>${cat}</option>
 							`)}
@@ -167,9 +167,9 @@ class VAdmin extends VLit{
 		<input type="text" placeholder="yeməyin adı" @change=${e=>this.newFoodName = e.target.value} .value=${this.newFoodName}>
 		<input type="number" placeholder="yeməyin qiyməti" @change=${e=>this.newFoodPrice = +e.target.value}>
 		<select @change=${e=>this.newFoodCat = e.target.value}>
-			<option value="" disabled>Kateqoriya</option>
+			<option value="">Kateqoriya</option>
 			${Object.keys(data.categories).map((cat,i)=>html`
-				<option value=${cat} ?selected=${i==0}>${cat}</option>
+				<option value=${cat}>${cat}</option>
 				`)}
 		</select>
 
@@ -178,7 +178,15 @@ class VAdmin extends VLit{
 		<hr>
 		<h1>Yeni kateqoriya</h1>
 		<input type="text" placeholder="kateqoriyanın adı" @change=${e=>this.newCatName = e.target.value} .value=${this.newCatName}>
-		<button @click=${this.addCat}>əlavə et</button>
+		<button @click=${this.addCat}>əlavə et</button> <br><br>
+		Kateqoriyalar <br>
+		${Object.keys(data.categories).map(cat=>html`
+			<button class="delete" @click=${e=>{
+			if (!confirm(`${cat} adlı kateqoriya silinsin mi?`)) return null
+			delete data.categories[cat]
+			this.requestUpdate()
+		}}>${cat}</button>
+			`)}
 
 		<hr>
 			<h1>Masaların sayı: ${data.orders.length}</h1>

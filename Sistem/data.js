@@ -57,7 +57,7 @@ export const entry = () => ({
 	selectedOrder: 0
 })
 
-// clear()
+clear()
 export var data = load() // load will either parse from V-DATA or parse the entry as string
 
 window.data = data
