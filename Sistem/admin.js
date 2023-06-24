@@ -6,7 +6,7 @@ console.log('fasaad')
 class VAdmin extends VLit{
 	static properties = {}
 	static props = {
-		auth: true,
+		auth: false,
 		newFoodName: "",
 		newFoodPrice: 0,
 		newFoodCat: 0,

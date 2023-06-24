@@ -17,7 +17,7 @@ export const entry = () => ({
 		// Isti yeməklər
 		"Toyuq şnitzeli": price(12),
 		"Kotlet": price(9),
-		"Toyuq sote": price(9),
+		"Toyuq sote": price(8),
 		"Ət langeti": price(18.90),
 		"Yarpaq dolması": price(12),
 		"Kabab": price(22),
@@ -75,23 +75,32 @@ export const entry = () => ({
 	sets: [{
 		name: "Tələbə menyusu",
 		setFoods: [
-			{name: "ayran", count: 1},
-			{name: "portağal", count: 1}
+			{name: "Kotlet", count: 1},
+			{name: "Ayran", count: 1}
 			],
-		discount: 0
+		discount: 1.70
 	},
 	{
-		name: "Tələbə menyusu",
+		name: "İkili menyu",
 		setFoods: [
-			{name: "ayran", count: 1},
-			{name: "portağal", count: 1}
+			{name: "Toyuq şorbası", count: 2},
+			{name: "Kofe", count: 2}
+		],
+		discount: 4
+	},
+	{
+		name: "Kabab süfrəsi",
+		setFoods: [
+			{name: "Kabab", count: 1},
+			{name: "Mərci şorbası", count: 2},
+			{name: "Çay dəzgahı", count: 1},
 			],
 		discount: 0
 	}],
 	selectedOrder: 0
 })
 
-clear()
+// clear()
 export var data = load() // load will either parse from V-DATA or parse the entry as string
 
 window.data = data
