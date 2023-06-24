@@ -26,7 +26,10 @@ class VMenu extends VLit{
 				</span>
 				<span class="dotsssssss"></span>
 				<span class="price" style="margin-left: auto">
-					<s>${price(set.setFoods.reduce((curr,acc)=>curr+data.foods[acc.name]*acc.count,0))}₼</s>
+					${
+					price(set.setFoods.reduce((curr,acc)=>curr+data.foods[acc.name]*acc.count,0)) != price(set.setFoods.reduce((curr,acc)=>curr+data.foods[acc.name]*acc.count,0)-set.discount) 
+					? html`
+					<s>${price(set.setFoods.reduce((curr,acc)=>curr+data.foods[acc.name]*acc.count,0))}₼</s>` : ""}
 					<b>${price(set.setFoods.reduce((curr,acc)=>curr+data.foods[acc.name]*acc.count,0)-set.discount)}₼</b>
 				</span>
 			</div>
