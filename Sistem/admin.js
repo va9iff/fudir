@@ -200,6 +200,24 @@ class VAdmin extends VLit{
 			<button class="addTableBtn" @click= ${this.addMasa}>Masa əlavə et</button>
 		</div>
 			<hr>
+		<details>
+			<summary>
+				Bütün verilənləri sil
+			</summary>
+			<details style="padding: 20px">
+				<summary>
+					Bu sifarişlər, masa sayları, menyudakı yeməklər, setlər və bütün qeydlərin silinməsi ilə nəticələnəcək
+				</summary>
+				<details style="padding: 20px">
+					<summary>
+						Dəvam edilsin?
+					</summary>
+					<button @click=${this.wipe} style="padding: 20px" class="delete">Bütün məlumatlar silinsin</button>
+				</details>
+
+			</details>
+
+		</details>
 
 		` : html`
 			<div class="adminAuth">
