@@ -1,4 +1,4 @@
-import {data, save, VLit, html, price} from "./v.js"
+import {data, save, entry, VLit, html, price} from "./v.js"
 
 
 console.log('fasaad')
