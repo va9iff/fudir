@@ -78,7 +78,7 @@ export const entry = () => ({
 			{name: "Kotlet", count: 1},
 			{name: "Ayran", count: 1}
 			],
-		discount: 1.70
+		discount: price(1.70)
 	},
 	{
 		name: "İkili menyu",
@@ -86,7 +86,7 @@ export const entry = () => ({
 			{name: "Toyuq şorbası", count: 2},
 			{name: "Kofe", count: 2}
 		],
-		discount: 4
+		discount: price(4)
 	},
 	{
 		name: "Kabab süfrəsi",
@@ -95,12 +95,12 @@ export const entry = () => ({
 			{name: "Mərci şorbası", count: 2},
 			{name: "Çay dəzgahı", count: 1},
 			],
-		discount: 0
+		discount: price(0)
 	}],
 	selectedOrder: 0
 })
 
-// clear()
+clear()
 export var data = load() // load will either parse from V-DATA or parse the entry as string
 
 window.data = data

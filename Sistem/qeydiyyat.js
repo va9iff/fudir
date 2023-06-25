@@ -13,10 +13,11 @@ class VQeydiyyat extends VLit{
 		let order = data.orders[this.selectedOrder]
 		order.foods[food] ??= {count: 0, total: 0}
 		order.foods[food].count++
-		order.foods[food].total += data.foods[food]
-		order.foods[food].total = price(order.foods[food].total)
+		order.foods[food].total = +price(data.foods[food] * order.foods[food].count)
 
-		order.total = price(Object.keys(order.foods).reduce((acc,curr)=>acc+order.foods[curr].total,0))
+		order.total = Object.keys(order.foods).reduce((acc,curr)=>acc+order.foods[curr].total,0)
+
+		// console.log(data.foods[food] * order.foods[food].total, data.foods[food], order.foods[food].total)
 
 		save()
 		this.requestUpdate()
@@ -25,7 +26,7 @@ class VQeydiyyat extends VLit{
 		let order = data.orders[this.selectedOrder]
 		order.foods[set.name] ??= {count: 0, total: 0}
 		order.foods[set.name].count++
-		order.foods[set.name].total += price(set.setFoods.reduce((curr,acc)=>curr+data.foods[acc.name]*acc.count,0)-set.discount)
+		order.foods[set.name].total = +order.foods[set.name].total + price(set.setFoods.reduce((curr,acc)=>curr+data.foods[acc.name]*acc.count,0)-set.discount)
 		order.total = price(Object.keys(order.foods).reduce((acc,curr)=>acc+order.foods[curr].total,0))
 
 		save()
@@ -95,7 +96,7 @@ class VQeydiyyat extends VLit{
 					<span>${this.selectedOrder+1} nömrəli masanın çeki <br><br></span>
 					${Object.keys(order.foods).map(food=>html`
 						<span class="addedFood">
-						<button @click=${e=>this.removeFromOrder(food)} class="delete">-</button> ${price(order.foods[food].count)}x ${food} ${order.foods[food].total}₼
+						<button @click=${e=>this.removeFromOrder(food)} class="delete">-</button> ${order.foods[food].count}x ${food} ${order.foods[food].total}₼
 						</span>
 					`)}
 					<span class="dayResult">${order.total ? html`<h2>${order.total}₼</h2>` : html`Masa boşdur!<br><br><h2>0₼</h2>`} <button class="btn finishOrder" @click=${this.done} ?disabled=${!order.total}>Hesabı Tamamla</button></span> 
