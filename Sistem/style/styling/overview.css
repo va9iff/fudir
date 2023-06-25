@@ -110,6 +110,5 @@ v-overview button:hover{
 }
 
 v-overview button:focus{
-	border: 2px solid #333;
-	transition: 100ms;
+	box-shadow: 0 -12px 0 0 #a1e0c0;
 }
