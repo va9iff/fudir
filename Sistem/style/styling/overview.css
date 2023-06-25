@@ -95,3 +95,21 @@ v-overview .orders .order details div.deletePopup {
 
 	}
 }
+
+v-overview button{
+	padding: 12px;
+	border-radius: 10px;
+	border: none;
+	transition: 120ms;
+}
+
+v-overview button:focus,
+v-overview button:hover{
+	transition: 400ms;
+	box-shadow: 0 -12px 0 0 #c4e8d7;
+}
+
+v-overview button:focus{
+	border: 2px solid #333;
+	transition: 100ms;
+}
