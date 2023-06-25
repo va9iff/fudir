@@ -26,7 +26,7 @@ class VQeydiyyat extends VLit{
 		let order = data.orders[this.selectedOrder]
 		order.foods[set.name] ??= {count: 0, total: 0}
 		order.foods[set.name].count++
-		order.foods[set.name].total = +order.foods[set.name].total + price(set.setFoods.reduce((curr,acc)=>curr+data.foods[acc.name]*acc.count,0)-set.discount)
+		order.foods[set.name].total = +price(order.foods[set.name].total + set.setFoods.reduce((curr,acc)=>curr+data.foods[acc.name]*acc.count,0)-set.discount)
 		order.total = price(Object.keys(order.foods).reduce((acc,curr)=>acc+order.foods[curr].total,0))
 
 		save()
