@@ -1,0 +1,616 @@
+v-overview{
+	padding: 30px;
+	display: block;
+}
+.btn{
+	padding: 4px;
+	border-radius: 7px;
+	border-width: 1px;
+}
+
+.columns {
+	display: flex;
+	flex-direction: row;
+}
+.columns > *{
+	flex: 1;
+}
+.list{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+.o5{
+	opacity: 0.5;
+}
+.delete{
+/*	background-color: #f88;*/
+	min-width: 20px;
+/*	min-height: 10px;*/
+	border-radius: 5px;
+	border: 1px solid #f99;
+	color: red;
+	background-color: transparent;
+}
+
+.delete:hover{
+	background-color: #f99;
+	color: #fff;
+	border-color: #f00;
+	transition: 140ms;
+}
+
+.f1{
+	font-size: 16px;
+}
+
+.f2{
+	font-size: 18px;
+}
+
+.f3{
+	font-size: 21px;
+}
+
+.f4{
+	font-size: 26px;
+}
+
+.dots{
+	border-bottom: 2px dotted #333;
+	flex: 1;
+}
+.toLeft{
+	margin-right: auto;
+}
+.toRight{
+	margin-left: auto;
+}
+
+body{
+	font-family: sans-serif;
+	padding: 0;
+	margin: 0;
+}
+
+.main{
+	display: flex;
+}
+
+.main > .container{
+	flex: 1;
+}
+
+/*.main .container *{*/
+/*	border: 1px solid #0002;*/
+/*	margin: 5px;*/
+/*}*/
+
+.container {
+	padding: 17px;
+}
+
+.content{
+	padding: 17px 25px;
+}
+
+
+.main{
+	width: 100%;
+	height: 100vh;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.container {
+	display: flex;
+}
+
+.container .content {
+	display: flex;
+	flex: 1;
+}
+
+.container .sidebar{
+	max-width: 30%;
+	overflow-x: auto;
+	display: flex;
+	flex-direction: column;
+}
+
+.container .sidebar{
+
+}
+
+.container .content > * {
+	flex: 1;
+}
+
+::-moz-selection { /* Code for Firefox */
+  color: #ffffff;
+  background: #79f2b5;
+}
+
+::selection {
+  color: #ffffff;
+  background: #79f2b5;
+}
+.container .sidebar button{
+	padding: 17px 30px;
+	font-size: 1.5rem;
+	border: none;
+	border-radius: 1.2rem;
+	background-color: #e7ffef;
+	margin: 5px;
+	transition: 200ms;
+	color: #222;
+	user-select: none;
+}
+
+.container .sidebar button:hover{
+	background-color: #79f2b5;
+}
+
+.container .sidebar button[active]{
+/*	background-color: #e7ffef;*/
+/*	box-shadow: 0 0 0 2px #e7ffef;*/
+	background-color: #a1e0c0;
+}
+
+
+.container .sidebar{
+	align-items: center;
+	justify-content: center;
+}
+
+.sidebar img{
+	max-width: 180px; 
+	opacity: 0.5; 
+	margin-bottom: 20px;
+	pointer-events: none;
+	user-select: none;
+}
+
+v-qeydiyyat{
+	display: flex;
+	flex-direction: column;
+	overflow-y: auto;
+}
+
+.masalar{
+	margin-bottom: 40px;
+	padding-left: 20px;
+	padding-top: 20px;
+}
+
+.masa {
+	position: relative;
+	background-color: #efe;
+	min-height: 40px;
+	min-width: 40px;
+	font-size: 18px;
+	border-radius: 50%;
+	border: #afa 2px solid;
+	transition: 130ms;
+	margin: 5px;
+	z-index: 95;
+}
+
+.masa:hover{
+	transform: scale(1.3);
+	z-index: 99;
+}
+
+.masa[selected]{
+	z-index: 96;
+	transform: scale(1.3);
+	box-shadow: 0 0 0 10px #0003;
+}
+
+.masa[dolu]{
+	background-color: #fdd;
+	border: #f33 2px solid;
+
+}
+
+
+
+
+.dayResult{
+	margin-top: 20px;
+}
+
+
+.finishOrder{
+	background-color: #4f8;
+	color: #000;
+	border: none;
+	box-shadow: 3px 3px #333;
+	padding: 12px;
+	transition: 300ms;
+}
+.finishOrder:hover{
+	box-shadow: 7px 7px #333;
+/*	transform: translate(-2px, -2px);*/
+}
+
+.finishOrder:hover{
+}
+.finishOrder:disabled{
+	opacity: 0.5;
+}
+
+
+.addingFood .plus{
+	transition: 200ms;
+	transform: scale(0);
+	display: inline-block;
+}
+.addingFood:hover .plus{
+	transform: scale(2);
+	margin: 0 10px;
+}
+.addingFood:active .plus{
+	transition: 0ms;
+	transform: scale(5);
+	color: cyan;
+}
+
+.addingFood{
+/*	background-color: #ddd;*/
+/*	margin: 4px;*/
+/*	border-radius: 40px;*/
+	padding: 10px 15px;
+	border-bottom: 1px solid #888;
+	background-color: #0000;
+	text-align: left;
+	font-size: 16px;
+	border: none;
+}
+
+.addingFoods{
+	padding-right: 90px;
+}
+
+v-qeydiyyat details:hover{
+	box-shadow: 0 0 1px #333 inset;
+}
+
+
+v-qeydiyyat details {
+	border-radius: 4px;
+	user-select: none;
+	transition: 200ms;
+}
+v-qeydiyyat details summary{
+	padding: 8px;
+	border-radius: 4px;
+
+}
+v-qeydiyyat details summary:hover{
+	background-color: #c7ffe5;
+}
+v-qeydiyyat details[open]{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+v-qeydiyyat details[open] summary{
+	background-color: #c4e8d7;
+}
+
+v-qeydiyyat details[open] summary:hover{
+	background-color: #abd6c2;
+
+}
+
+.addedFood{
+	animation: addedFoodAnim 400ms;
+}
+
+@keyframes addedFoodAnim {
+	from{
+		transform: translateX(-50px);
+		opacity: 0;
+	}
+	to{
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+.cek{
+	padding-left: 30px;
+}
+
+.resultCash,
+.cek h2{
+	color: #282828;
+	font-size: 30px;
+/*	text-shadow: 1px 1px 5px  #8f8;*/
+}
+v-menu{
+	display: flex;
+	padding: 0;
+}
+
+.menu{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+/*	gap: 4px;*/
+/*	background-color: #ddd;*/
+/*	padding: 30px;*/
+	border-radius: 10px;
+	font-family: cursive;
+	overflow-y: scroll;
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+
+.menu::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.menu::-webkit-scrollbar-track {
+  background: #0000;
+}
+
+/* Handle */
+.menu::-webkit-scrollbar-thumb {
+  background: #79f2b5;
+  border-radius: 80px;
+}
+
+/* Handle on hover */
+.menu::-webkit-scrollbar-thumb:hover {
+  background: #00ff87;
+}
+
+
+.menu .food{
+	padding: 13px 20px;
+	border-radius: 13px;
+	display: flex;
+	flex-direction: row;
+	min-width: 30%;
+	flex-grow: 1;
+	flex: 1;
+}
+
+.menu .food:hover{
+	background-color: #e7ffef;
+}
+
+.menu .price{
+/*	margin-left: auto;*/
+	margin-left: 5px;
+}
+.menu .name{
+	margin-right: 5px;
+}
+
+.menu .menuHeader{
+	margin-top: 40px;
+	min-width: 71%;
+}
+.orders{
+	margin-right: 40px;
+}
+
+.order{
+	padding: 3px;
+	display: flex;
+}
+
+.order[active]{
+	background-color: #e7ffef;
+
+}
+
+.order .numberPart,
+.order .masaPart,
+.order .totalPart{
+	flex: 1;
+}
+
+
+.orderLine{
+	margin-top: 3px;
+	animation: orderLineAnim 300ms;
+}
+
+@keyframes orderLineAnim{
+	from{
+		transform: translateY(-10px);
+		opacity: 0;
+	}
+	to{
+		transform: translateY(0);
+		opacity: 1;
+
+	}
+}
+
+v-overview .resultCash{
+	margin-top: 50px;
+	display: block;
+}
+
+
+v-overview{
+	overflow-y: auto;
+}
+
+
+details.delete > summary {
+  list-style: none;
+  padding: 0 3px;
+}
+
+v-overview .orders .order details summary.delete{
+	visibility: hidden
+}
+
+v-overview .orders .order:hover details summary.delete{
+	visibility: visible
+}
+
+
+v-overview .orders .order details[open] summary.delete {
+	visibility: visible;
+}
+
+v-overview .orders .order details div.deletePopup {
+	background-color: #ddd;
+	padding: 7px;
+	border-radius: 4px;
+	position: absolute;
+	border: 1px solid #666;
+}
+
+.wipeIn{
+	animation: wipeInAnim 3000ms infinite;
+	text-align: center;
+	border-radius: 4px;
+	margin: 4px;
+	padding: 4px;
+	background: linear-gradient(90deg, #3ff, #3f3, #3ff);
+/*	color: #fff;*/
+/*	background-position: 50% 50%;*/
+/*	background-position: 100px 5px; */
+
+/*	background-repeat: no-repeat;*/
+}
+@keyframes wipeInAnim{
+	from{
+		background-position: 0 0;
+	}
+	to{
+		background-position: 1000px 5px; 
+
+	}
+}
+
+v-overview button{
+	padding: 12px;
+	border-radius: 10px;
+	border: none;
+	transition: 120ms;
+}
+
+v-overview button:focus,
+v-overview button:hover{
+	transition: 400ms;
+	box-shadow: 0 -12px 0 0 #c4e8d7;
+}
+
+v-overview button:focus{
+	box-shadow: 0 -12px 0 0 #a1e0c0;
+}
+
+v-admin {
+	overflow-y: scroll;
+	display: flex;
+	flex-direction: column;
+}
+
+v-admin button {
+/*	margin: 4px;*/
+	padding: 3px;
+	border-radius: 5px;
+	border: none;
+}
+
+v-admin input {
+/*	font-size: 16px;*/
+}
+
+select{
+	background-color: #d1ffe9;
+}
+
+option{
+	background-color: #ffffff;
+	font-size: 16px;
+	animation: optAnim 300ms;
+}
+
+.addTableBtn{
+	color: #2aae55;
+	border: 2px solid #ddd;
+	background-color: transparent;
+}
+.addTableBtn:active{
+	color: #fff;
+	background-color: #2aff55;
+	transition: 0ms;
+}
+
+.rmvTableBtn{
+	color: #ae2a2a;
+	border: 2px solid #ddd;
+	background-color: transparent;
+}
+
+.rmvTableBtn:active{
+	color: #fff;
+	background-color: #ff2a2a;
+	transition: 0ms;
+}
+
+.addTableBtn,
+.rmvTableBtn{
+	font-size: 20px;
+	transition: 200ms;
+}
+
+.adminAuth{
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	color: #222;
+}
+.adminAuth input[type="password"]{
+	min-width: 100%;
+}
+input[type="password"]{
+	text-align: center;
+}
+
+button.closeAdmin{
+	display: flex;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+
+}
+
+.closeAdmin span{
+	margin-left: 10px;
+}
+
+.closeAdmin h3{
+	flex: 1;
+}
+
+.order.header{
+	border-bottom: 2px solid #ddd;
+}
+
+v-admin .s{
+	width: 3em;
+}
+
+html, body{
+	background-color: #c4e8d7;
+}
+
+.content{
+	background-color: #fff;
+	border-radius: 20px;
+}
