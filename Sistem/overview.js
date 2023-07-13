@@ -40,7 +40,7 @@ class VOverview extends VLit {
 		let csv =
 			`ID; Masa; Saat; Yemək; Məbləğ\n` +
 			`-1; -1; 00:00; Ümumi; ${price(
-				data.overview.reduce((acc, curr) => acc + curr.total, 0)
+				data.overview.reduce((acc, curr) => price(acc + curr.total), 0)
 			)}\n` +
 			data.overview
 				.map((order, oi) =>
@@ -183,7 +183,7 @@ class VOverview extends VLit {
 					<br />
 					<h2 class="resultCash">
 						Bugünlük ümumi gəlir
-						${price(data.overview.reduce((acc, curr) => acc + curr.total, 0))}₼
+						${price(data.overview.reduce((acc, curr) => price(acc + curr.total), 0))}₼
 					</h2>
 					${this.willWipe
 						? html`<span class="wipeIn"
