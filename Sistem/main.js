@@ -4,6 +4,7 @@ import "./overview.js"
 import "./settings.js"
 import "./admin.js"
 import {data, save, VLit, html} from "./v.js"
+import logo from "./logoImage64.js"
 
 const pages = {
 	Menyu: ()=>html`<v-menu></v-menu>`,
@@ -31,7 +32,7 @@ class VMain extends VLit{
 			<div class="main">
 				<div class="container">
 					<div class="sidebar">
-					<img src="./logo.png" alt="fodir">
+					<img src="${logo}" alt="fodir">
 						${Object.keys(pages).map(page=>html`
 								<button @click=${e=>this.page=page} ?active=${this.page==page}>
 									${page}
