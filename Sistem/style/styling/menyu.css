@@ -1,9 +1,46 @@
+@font-face {
+    font-family: GreatVibes;
+    src: url(GreatVibes-Regular.ttf);
+}
+
+@font-face {
+    font-family: BaketFashion;
+    src: url(BaketFashion.otf);
+}
+
+@font-face {
+    font-family: RhumbaScript;
+    src: url(RhumbaScript.ttf);
+}
+
+@font-face {
+    font-family: miama;
+    src: url(miama.otf);
+}
+
+@font-face {
+    font-family: Norican;
+    src: url(Norican.otf);
+}
+@font-face {
+    font-family: Hitchhiker;
+    src: url(Hitchhiker.ttf);
+}
+
+
+
+
 v-menu{
 	display: flex;
 	padding: 0;
 }
 
+.menu h2{
+	font-family: miama;
+}
+
 .menu{
+  font-family: cursive;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -11,7 +48,6 @@ v-menu{
 /*	background-color: #ddd;*/
 /*	padding: 30px;*/
 	border-radius: 10px;
-	font-family: cursive;
 	overflow-y: scroll;
 	justify-content: flex-start;
 	align-items: flex-start;
