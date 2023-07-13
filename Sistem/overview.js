@@ -183,7 +183,8 @@ class VOverview extends VLit {
 					<br />
 					<h2 class="resultCash">
 						Bugünlük ümumi gəlir
-						${price(data.overview.reduce((acc, curr) => price(acc + curr.total), 0))}₼
+						${price(data.overview.reduce((acc, curr) => {
+							return price(+acc + +curr.total)}, 0))}₼
 					</h2>
 					${this.willWipe
 						? html`<span class="wipeIn"
