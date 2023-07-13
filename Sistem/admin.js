@@ -43,11 +43,10 @@ class VAdmin extends VLit{
 	}
 	addFood(e){
 		data.foods[this.newFoodName] = price(this.newFoodPrice)
-		this.newFoodName = ""
-		this.requestUpdate()
 		if (this.newFoodCat) data.categories[this.newFoodCat].push(this.newFoodName)
 		save()
 		this.requestUpdate()
+		this.newFoodName = ""
 	}
 	checkAuth(e){
 		if (e.target.value == "2024")
